@@ -1,21 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:montesori/components/star.dart';
 import 'package:montesori/config/color.dart';
 import 'dart:math' as math;
 
 class WinCondition extends StatelessWidget {
   final VoidCallback? replay;
   final RoutePredicate? predicate;
-  WinCondition({Key? key, this.replay, this.predicate}) : super(key: key);
+  final int? star;
+  WinCondition({Key? key, this.replay, this.predicate, this.star}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
+    String? msg;
+    switch (star) {
+      case 3:
+        msg = "Luar Biasa!";
+        break;
+      case 2:
+        msg = "Kerja Bagus!";
+        break;
+      case 1:
+        msg= "Hebat!";
+        break;
+      default:
+        msg = "Luar Biasa!";
+    }
+    
     return Scaffold(
         backgroundColor: ColorApps.primaryColor,
         body: Stack(
           alignment: Alignment.center,
           children: [
-            // Kotak putih
+            // * Kotak putih
             Center(
                 child: Container(
                     width: 336,
@@ -30,15 +47,15 @@ class WinCondition extends StatelessWidget {
                               offset: Offset(4, 4))
                         ]),
                     child: Center(
-                      child: Text("Luar Biasa!",
-                          style: TextStyle(
+                      child: Text(msg,
+                          style: const TextStyle(
                               color: ColorApps.menuBentuk,
                               fontWeight: FontWeight.w800,
                               fontSize: 24)),
                     ))),
-            // Home button
+            // * Home button
             Positioned(
-              bottom: screenSize.height * 0.1388888888888889,
+              bottom: screenSize.height * 0.14,
               left: screenSize.width * 0.325,
               child: SizedBox(
                 width: 89,
@@ -54,9 +71,9 @@ class WinCondition extends StatelessWidget {
                             color: ColorApps.white, size: 50))),
               ),
             ),
-            // Replay Button
+            // * Replay Button
             Positioned(
-                bottom: screenSize.height * 0.1388888888888889,
+                bottom: screenSize.height * 0.14,
                 right: screenSize.width * 0.323703125,
                 child: SizedBox(
                   width: 89,
@@ -68,15 +85,23 @@ class WinCondition extends StatelessWidget {
                           angle: 270 * math.pi / 180,
                           child: IconButton(
                             onPressed: replay,
-                            icon: Icon(Icons.replay_rounded,
+                            icon: const Icon(Icons.replay_rounded,
                                 color: ColorApps.white, size: 50),
                           ))),
                 )),
-            // Banner
+            // * Banner
             Positioned(
               top: screenSize.height * 0.2,
               child: Image.asset("assets/images/menu/ic_menu_win_banner.png",height: 57.75)
             ),
+            // * Star
+            Positioned(
+              top: 80,
+              child: SizedBox(
+                width: 125,
+                child: Star(star:star)
+              )
+            )
             
           ],
         ));
