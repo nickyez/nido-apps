@@ -24,7 +24,14 @@ class Huruf {
     "Rr",
     "Ss",
     "Tt",
+    "Uu",
+    "Vv",
+    "Ww",
+    "Xx",
+    "Yy",
+    "Zz",
   ];
+
   static const List<String> subTitle = [
     "Apel",
     "Bawang",
@@ -45,8 +52,15 @@ class Huruf {
     "Quiz",
     "Rambutan",
     "Susu",
-    "Telur"
+    "Telur",
+    "Ubi",
+    "Vas",
+    "Wortel",
+    "Xylophone",
+    "Yoyo",
+    "Zaitun",
   ];
+
   static const List<String> imageUrl = [
     "assets/images/huruf/before/ic_huruf_a.png",
     "assets/images/huruf/before/ic_huruf_b.png",
@@ -68,7 +82,43 @@ class Huruf {
     "assets/images/huruf/before/ic_huruf_r.png",
     "assets/images/huruf/before/ic_huruf_s.png",
     "assets/images/huruf/before/ic_huruf_t.png",
+    "assets/images/huruf/before/ic_huruf_u.png",
+    "assets/images/huruf/before/ic_huruf_v.png",
+    "assets/images/huruf/before/ic_huruf_w.png",
+    "assets/images/huruf/before/ic_huruf_x.png",
+    "assets/images/huruf/before/ic_huruf_y.png",
+    "assets/images/huruf/before/ic_huruf_z.png",
   ];
+
+  static const List<String> imageUrlAfter = [
+    "assets/images/huruf/after/ic_huruf_a.png",
+    "assets/images/huruf/after/ic_huruf_b.png",
+    "assets/images/huruf/after/ic_huruf_c.png",
+    "assets/images/huruf/after/ic_huruf_d.png",
+    "assets/images/huruf/after/ic_huruf_e.png",
+    "assets/images/huruf/after/ic_huruf_f.png",
+    "assets/images/huruf/after/ic_huruf_g.png",
+    "assets/images/huruf/after/ic_huruf_h.png",
+    "assets/images/huruf/after/ic_huruf_i.png",
+    "assets/images/huruf/after/ic_huruf_j.png",
+    "assets/images/huruf/after/ic_huruf_k.png",
+    "assets/images/huruf/after/ic_huruf_l.png",
+    "assets/images/huruf/after/ic_huruf_m.png",
+    "assets/images/huruf/after/ic_huruf_n.png",
+    "assets/images/huruf/after/ic_huruf_o.png",
+    "assets/images/huruf/after/ic_huruf_p.png",
+    "assets/images/huruf/after/ic_huruf_q.png",
+    "assets/images/huruf/after/ic_huruf_r.png",
+    "assets/images/huruf/after/ic_huruf_s.png",
+    "assets/images/huruf/after/ic_huruf_t.png",
+    "assets/images/huruf/after/ic_huruf_u.png",
+    "assets/images/huruf/after/ic_huruf_v.png",
+    "assets/images/huruf/after/ic_huruf_w.png",
+    "assets/images/huruf/after/ic_huruf_x.png",
+    "assets/images/huruf/after/ic_huruf_y.png",
+    "assets/images/huruf/after/ic_huruf_z.png",
+  ];
+
   static const List<Color> colorBg = [
     ColorApps.hurufA,
     ColorApps.hurufB,
@@ -90,7 +140,14 @@ class Huruf {
     ColorApps.hurufR,
     ColorApps.hurufS,
     ColorApps.hurufT,
+    ColorApps.hurufU,
+    ColorApps.hurufV,
+    ColorApps.hurufW,
+    ColorApps.hurufX,
+    ColorApps.hurufY,
+    ColorApps.hurufZ,
   ];
+
   static const List<Color> colorHuruf = [
     ColorApps.titleA,
     ColorApps.titleB,
@@ -112,5 +169,40 @@ class Huruf {
     ColorApps.titleR,
     ColorApps.titleS,
     ColorApps.titleT,
+    ColorApps.titleU,
+    ColorApps.titleV,
+    ColorApps.titleW,
+    ColorApps.titleX,
+    ColorApps.titleY,
+    ColorApps.titleZ,
+  ];
+
+  static const List<Color> colorStroke = [
+    ColorApps.strokeA,
+    ColorApps.strokeB,
+    ColorApps.strokeC,
+    ColorApps.strokeD,
+    ColorApps.strokeE,
+    ColorApps.strokeF,
+    ColorApps.strokeG,
+    ColorApps.strokeH,
+    ColorApps.strokeI,
+    ColorApps.strokeJ,
+    ColorApps.strokeK,
+    ColorApps.strokeL,
+    ColorApps.strokeM,
+    ColorApps.strokeN,
+    ColorApps.strokeO,
+    ColorApps.strokeP,
+    ColorApps.strokeQ,
+    ColorApps.strokeR,
+    ColorApps.strokeS,
+    ColorApps.strokeT,
+    ColorApps.strokeU,
+    ColorApps.strokeV,
+    ColorApps.strokeW,
+    ColorApps.strokeX,
+    ColorApps.strokeY,
+    ColorApps.strokeZ,
   ];
 }
