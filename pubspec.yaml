@@ -34,11 +34,15 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  bubble: ^1.2.1
+  flutter_swipe_detector: ^1.0.1
+  rive: ^0.7.22
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_launcher_icons: "^0.9.0"
+  flutter_app_name: ^0.1.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -46,9 +50,17 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
 
+# This is for launcher icon setup
+flutter_icons:
+  image_path: "assets/images/menu/ic_menu_logo.png" 
+  android: true
+  ios: true
+
+# This is for App name
+flutter_app_name:
+  name: "Nido App"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -65,8 +77,93 @@ flutter:
       - assets/images/menu/ic_menu_bentuk.png
       - assets/images/menu/ic_menu_warna.png
       - assets/images/menu/ic_menu_huruf.png
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+      - assets/images/menu/ic_menu_play.png
+      - assets/images/menu/ic_menu_logo.png
+      - assets/images/menu/ic_menu_pause.png
+      - assets/images/menu/ic_menu_win_banner.png
+      - assets/images/menu/ic_menu_win_star.png
+      - assets/images/game_menu_screen/gs_angka.png
+      - assets/images/game_menu_screen/gs_bentuk.png
+      - assets/images/game_menu_screen/gs_huruf.jpg
+      - assets/images/game_menu_screen/gs_warna.png
+      - assets/images/angka/bg_angka.png
+      - assets/images/angka/ic_angka_buto.png
+      - assets/images/angka/ic_angka_buto_hurt.png
+      - assets/images/angka/ic_angka_timunemas.png
+      - assets/images/angka/ic_angka_biji.png
+      - assets/images/guide/ic_arrow_angka.png
+      - assets/images/guide/ic_arrow_warna.png
+      - assets/animations/angka/swipeup.riv
+      - assets/images/bentuk/ic_bentuk_star.png
+      - assets/images/bentuk/ic_bentuk_triangle.png
+      - assets/images/bentuk/ic_bentuk_circle.png
+      - assets/images/bentuk/ic_bentuk_1.png
+      - assets/images/bentuk/ic_bentuk_2.png
+      - assets/images/bentuk/ic_bentuk_3.png
+      - assets/images/bentuk/ic_bentuk_4.png
+      - assets/images/bentuk/ic_bentuk_5.png
+      - assets/images/bentuk/ic_bentuk_6.png
+      - assets/images/bentuk/ic_bentuk_bg.png
+      - assets/images/warna/ic_warna_1.png
+      - assets/images/warna/ic_warna_2.png
+      - assets/images/warna/ic_warna_3.png
+      - assets/images/warna/ic_warna_4.png
+      - assets/images/warna/ic_warna_5.png
+      - assets/images/warna/ic_warna_6.png
+      - assets/images/huruf/before/ic_huruf_a.png
+      - assets/images/huruf/before/ic_huruf_b.png
+      - assets/images/huruf/before/ic_huruf_c.png
+      - assets/images/huruf/before/ic_huruf_d.png
+      - assets/images/huruf/before/ic_huruf_e.png
+      - assets/images/huruf/before/ic_huruf_f.png
+      - assets/images/huruf/before/ic_huruf_g.png
+      - assets/images/huruf/before/ic_huruf_h.png
+      - assets/images/huruf/before/ic_huruf_i.png
+      - assets/images/huruf/before/ic_huruf_j.png
+      - assets/images/huruf/before/ic_huruf_k.png
+      - assets/images/huruf/before/ic_huruf_l.png
+      - assets/images/huruf/before/ic_huruf_m.png
+      - assets/images/huruf/before/ic_huruf_n.png
+      - assets/images/huruf/before/ic_huruf_o.png
+      - assets/images/huruf/before/ic_huruf_p.png
+      - assets/images/huruf/before/ic_huruf_q.png
+      - assets/images/huruf/before/ic_huruf_r.png
+      - assets/images/huruf/before/ic_huruf_s.png
+      - assets/images/huruf/before/ic_huruf_t.png
+      - assets/images/huruf/before/ic_huruf_u.png
+      - assets/images/huruf/before/ic_huruf_v.png
+      - assets/images/huruf/before/ic_huruf_w.png
+      - assets/images/huruf/before/ic_huruf_x.png
+      - assets/images/huruf/before/ic_huruf_y.png
+      - assets/images/huruf/before/ic_huruf_z.png
+      - assets/images/huruf/after/ic_huruf_a.png
+      - assets/images/huruf/after/ic_huruf_b.png
+      - assets/images/huruf/after/ic_huruf_c.png
+      - assets/images/huruf/after/ic_huruf_d.png
+      - assets/images/huruf/after/ic_huruf_e.png
+      - assets/images/huruf/after/ic_huruf_f.png
+      - assets/images/huruf/after/ic_huruf_g.png
+      - assets/images/huruf/after/ic_huruf_h.png
+      - assets/images/huruf/after/ic_huruf_i.png
+      - assets/images/huruf/after/ic_huruf_j.png
+      - assets/images/huruf/after/ic_huruf_k.png
+      - assets/images/huruf/after/ic_huruf_l.png
+      - assets/images/huruf/after/ic_huruf_m.png
+      - assets/images/huruf/after/ic_huruf_n.png
+      - assets/images/huruf/after/ic_huruf_o.png
+      - assets/images/huruf/after/ic_huruf_p.png
+      - assets/images/huruf/after/ic_huruf_q.png
+      - assets/images/huruf/after/ic_huruf_r.png
+      - assets/images/huruf/after/ic_huruf_s.png
+      - assets/images/huruf/after/ic_huruf_t.png
+      - assets/images/huruf/after/ic_huruf_u.png
+      - assets/images/huruf/after/ic_huruf_v.png
+      - assets/images/huruf/after/ic_huruf_w.png
+      - assets/images/huruf/after/ic_huruf_x.png
+      - assets/images/huruf/after/ic_huruf_y.png
+      - assets/images/huruf/after/ic_huruf_z.png
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
