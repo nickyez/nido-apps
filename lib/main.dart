@@ -4,7 +4,7 @@ import 'package:montesori/screens/loadingscreen.dart';
 void main() {
   runApp(const MyApp());
   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight]);
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 }
 
 class MyApp extends StatelessWidget {
@@ -14,10 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Rounded Mplus 1c'
       ),
-      home: LoadingScreen(),
+      home: const LoadingScreen(),
     );
   }
 }
