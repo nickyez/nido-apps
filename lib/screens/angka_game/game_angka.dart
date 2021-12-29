@@ -7,6 +7,7 @@ import 'package:montesori/components/win_condition.dart';
 import 'package:montesori/config/color.dart';
 import 'package:bubble/bubble.dart';
 import 'package:flutter_swipe_detector/flutter_swipe_detector.dart';
+import 'package:rive/rive.dart';
 
 class GameAngka extends StatefulWidget {
   final String angka;
@@ -21,6 +22,22 @@ class _GameAngkaState extends State<GameAngka> {
   @override
   void initState() {
     super.initState();
+    // WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    //   await showDialog(
+    //       context: context,
+    //       builder: (BuildContext ctx) {
+    //         return AlertDialog(
+    //             title: const Center(child: Text("Tutorial")),
+    //             content: Text("Lempar biji dengan geser ke atas"),
+    //             actions: [
+    //               TextButton(
+    //                   onPressed: () {
+    //                     Navigator.pop(ctx);
+    //                   },
+    //                   child: const Text("Lanjut"))
+    //             ]);
+    //       });
+    // });
     moveCharacter();
   }
 
@@ -174,6 +191,16 @@ class _GameAngkaState extends State<GameAngka> {
                                 width: sizeBiji),
                           ))
                       : const SizedBox(),
+                  // * Animasi guide
+                  isAttack && attacked == 0
+                      ? Positioned(
+                          left: screenSize.width * 0.5208333333333333,
+                          bottom: screenSize.height * 0.25,
+                          child: Image.asset(
+                              "assets/images/guide/ic_arrow_angka.png",
+                              height: 150),
+                        )
+                      : const SizedBox(),
                   // * Bubble Text
                   timunemasPosition == -46 && !isAttack
                       ? Positioned(
@@ -211,10 +238,7 @@ class _GameAngkaState extends State<GameAngka> {
                   const Positioned(
                       top: 20,
                       left: 13,
-                      child: SizedBox(
-                          width: 125,
-                          child: Star(
-                              star: 0))),
+                      child: SizedBox(width: 125, child: Star(star: 0))),
                   // * Setting button
                   Positioned(
                       top: 20,

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _GameWarnaState extends State<GameWarna> {
     var isAccept = false;
     var wrongCount = 0;
     var image = "";
+    late Timer _timer;
 
     // ? Untuk reset value
     void reset() {
@@ -34,11 +36,30 @@ class _GameWarnaState extends State<GameWarna> {
       });
     }
 
-    
     // ! Untuk tombol replay pada setting button
     void replay() {
       reset();
       Navigator.pop(context);
+    }
+
+    wrongAnswer(String text) {
+      return showDialog(
+          context: context,
+          builder: (BuildContext ctx) {
+            _timer = Timer(Duration(milliseconds: 500), () {
+              Navigator.of(context).pop();
+            });
+            return AlertDialog(
+                backgroundColor: ColorApps.warning,
+                content: Text(text,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: ColorApps.white)));
+          }).then((val) {
+        if (_timer.isActive) {
+          _timer.cancel();
+
+        }
+      });
     }
 
     // * Untuk shuffle ikan
@@ -59,30 +80,29 @@ class _GameWarnaState extends State<GameWarna> {
                 top: screenSize.height * 0.1944444444444444,
                 right: screenSize.width * 0.3450520833333333,
                 child: DragTarget<String>(
-                  onWillAccept: (value) {
-                    if (value != target) {
-                      wrongCount++;
-                      return false;
-                    }
-                    return true;
-                  },
+                  onWillAccept: (value) => true,
                   onAccept: (value) {
-                    isAccept = true;
-                    image = value;
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context2) => WinCondition(
-                                replay: replay,
-                                predicate: (route) {
-                                  reset();
-                                  return route.isFirst;
-                                },
-                                star: wrongCount >= 2
-                                    ? 1
-                                    : wrongCount == 1
-                                        ? 2
-                                        : 3)));
+                    if (value != target) {
+                      wrongAnswer('Warna salah');
+                      wrongCount++;
+                    } else {
+                      isAccept = true;
+                      image = value;
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context2) => WinCondition(
+                                  replay: replay,
+                                  predicate: (route) {
+                                    reset();
+                                    return route.isFirst;
+                                  },
+                                  star: wrongCount >= 2
+                                      ? 1
+                                      : wrongCount == 1
+                                          ? 2
+                                          : 3)));
+                    }
                   },
                   builder: (context, candidates, rejected) {
                     return isAccept
@@ -123,6 +143,19 @@ class _GameWarnaState extends State<GameWarna> {
                                       color: ColorApps.white)),
                             ),
                           )))),
+              // * Guide
+              wrongCount == 0 
+                  ? Positioned(
+                      top: screenSize.height * 0.2555555555555556,
+                      right: screenSize.width * 0.4427083333333333,
+                      child: Transform(
+                          alignment: Alignment.center,
+                          transform: Matrix4.rotationY(math.pi),
+                          child: Image.asset(
+                              'assets/images/guide/ic_arrow_warna.png',
+                              width: 200)),
+                    )
+                  : const SizedBox(),
               // * Ikan
               for (var i = 0; i < Warna.imageUrl.length; i++)
                 Positioned(

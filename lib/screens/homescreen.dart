@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           content: StatefulBuilder(
                                             builder: (context, setState) {
-                                              return Wrap(children: [
+                                              return Column(children: [
                                                     Container(
                                                         height: 155,
                                                         padding:
@@ -136,6 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               MainAxisAlignment
                                                                   .spaceBetween,
                                                           children: [
+                                                            // ! Subtitle
                                                             Column(
                                                                 children: const [
                                                                   Center(
@@ -159,6 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       color: ColorApps
                                                                           .menuAngka)
                                                                 ]),
+                                                            // ! Nama
                                                             Row(children: [
                                                               const Expanded(
                                                                   child: Text(
@@ -201,6 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                             "")),
                                                               )
                                                             ]),
+                                                            // ! Umur
                                                             Row(children: [
                                                               const Expanded(
                                                                   child: Text(
@@ -243,6 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                             "")),
                                                               )
                                                             ]),
+                                                            // ! Music
                                                             Row(children: [
                                                               const Expanded(
                                                                   child: Text(
@@ -257,9 +261,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           .w800,
                                                                 ),
                                                               )),
-                                                              Center(
+                                                              Align(
+                                                                alignment: Alignment.centerRight,
                                                                 child: SizedBox(
-                                                                  width: 200,
+                                                                  width: 180,
                                                                   height: 20,
                                                                   child:
                                                                       SliderTheme(
@@ -302,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             ]),
                                                           ],
                                                         )),
-                                                    const SizedBox(height: 10),
+                                                    const SizedBox(height: 15),
                                                     Container(
                                                         height: 35,
                                                         padding:

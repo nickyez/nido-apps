@@ -23,12 +23,17 @@ var target = "";
 class _GameBentukState extends State<GameBentuk> {
   late String name = widget.name, shapeTarget = widget.shapeTarget;
   bool isCorrect = false;
+  late Timer _timer;
   void replay() {
+    reset();
+    Navigator.pop(context);
+  }
+
+  void reset() {
     setState(() {
       target = "";
       isCorrect = false;
     });
-    Navigator.pop(context);
   }
 
   winCondition() async {
@@ -41,13 +46,21 @@ class _GameBentukState extends State<GameBentuk> {
                   replay: replay,
                   predicate: (route) => route.isFirst,
                   star: 1)));
+      reset();
     });
+  }
+
+  Widget wrongAnswer(String text) {
+    return AlertDialog(
+        backgroundColor: ColorApps.warning,
+        content: Text(text,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: ColorApps.white)));
   }
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
         body: Stack(alignment: Alignment.center, children: [
       // * Background
@@ -158,25 +171,29 @@ class _GameBentukState extends State<GameBentuk> {
         left: screenSize.width * 0.1041666666666667,
         bottom: screenSize.height * 0.3055555555555556,
         child: DragTarget<String>(
-            onWillAccept: (value) =>
-                value == shapeTarget && value == Bentuk.imageUrl[0]
-                    ? true
-                    : false,
+            onWillAccept: (value) => true,
             onAccept: (value) {
-              setState(() {
-                target = value;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context2) => WinCondition(
-                            replay: replay,
-                            predicate: (route) {
-                              setState(() {
-                                target = "";
-                              });
-                              return route.isFirst;
-                            })));
-              });
+              if (value == shapeTarget && value == Bentuk.imageUrl[0]) {
+                setState(() {
+                  target = value;
+                  winCondition();
+                });
+              } else {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext builderContext) {
+                      _timer = Timer(Duration(milliseconds: 500), () {
+                        Navigator.of(context).pop();
+                      });
+                      return value != shapeTarget
+                          ? wrongAnswer('Bentuk Salah')
+                          : wrongAnswer('Bentuk yang dicari salah');
+                    }).then((val) {
+                  if (_timer.isActive) {
+                    _timer.cancel();
+                  }
+                });
+              }
             },
             builder: (context, candidates, rejected) {
               return target == Bentuk.imageUrl[0] && target == shapeTarget
@@ -192,25 +209,29 @@ class _GameBentukState extends State<GameBentuk> {
         top: screenSize.height * 0.1555555555555556,
         left: screenSize.width * 0.12630208,
         child: DragTarget<String>(
-            onWillAccept: (value) =>
-                value == shapeTarget && value == Bentuk.imageUrl[5]
-                    ? true
-                    : false,
+            onWillAccept: (value) => true,
             onAccept: (value) {
-              setState(() {
-                target = value;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context2) => WinCondition(
-                            replay: replay,
-                            predicate: (route) {
-                              setState(() {
-                                target = "";
-                              });
-                              return route.isFirst;
-                            })));
-              });
+              if (value == shapeTarget && value == Bentuk.imageUrl[5]) {
+                setState(() {
+                  target = value;
+                  winCondition();
+                });
+              } else {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext builderContext) {
+                      _timer = Timer(Duration(milliseconds: 500), () {
+                        Navigator.of(context).pop();
+                      });
+                      return value != shapeTarget
+                          ? wrongAnswer('Bentuk Salah')
+                          : wrongAnswer('Bentuk yang dicari salah');
+                    }).then((val) {
+                  if (_timer.isActive) {
+                    _timer.cancel();
+                  }
+                });
+              }
             },
             builder: (context, candidates, rejected) {
               return target == Bentuk.imageUrl[5] && target == shapeTarget
@@ -226,25 +247,29 @@ class _GameBentukState extends State<GameBentuk> {
         top: screenSize.height * 0.1555555555555556,
         left: screenSize.width * 0.3697916666666667,
         child: DragTarget<String>(
-            onWillAccept: (value) =>
-                value == shapeTarget && value == Bentuk.imageUrl[1]
-                    ? true
-                    : false,
+            onWillAccept: (value) => true,
             onAccept: (value) {
-              setState(() {
-                target = value;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context2) => WinCondition(
-                            replay: replay,
-                            predicate: (route) {
-                              setState(() {
-                                target = "";
-                              });
-                              return route.isFirst;
-                            })));
-              });
+              if (value == shapeTarget && value == Bentuk.imageUrl[1]) {
+                setState(() {
+                  target = value;
+                  winCondition();
+                });
+              } else {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext builderContext) {
+                      _timer = Timer(Duration(milliseconds: 500), () {
+                        Navigator.of(context).pop();
+                      });
+                      return value != shapeTarget
+                          ? wrongAnswer('Bentuk Salah')
+                          : wrongAnswer('Bentuk yang dicari salah');
+                    }).then((val) {
+                  if (_timer.isActive) {
+                    _timer.cancel();
+                  }
+                });
+              }
             },
             builder: (context, candidates, rejected) {
               return target == Bentuk.imageUrl[1] && target == shapeTarget
@@ -261,25 +286,29 @@ class _GameBentukState extends State<GameBentuk> {
         bottom: screenSize.height * 0.3055555555555556,
         left: (screenSize.width * 0.5) - 100,
         child: DragTarget<String>(
-            onWillAccept: (value) =>
-                value == shapeTarget && value == Bentuk.imageUrl[3]
-                    ? true
-                    : false,
+            onWillAccept: (value) => true,
             onAccept: (value) {
-              setState(() {
-                target = value;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context2) => WinCondition(
-                            replay: replay,
-                            predicate: (route) {
-                              setState(() {
-                                target = "";
-                              });
-                              return route.isFirst;
-                            })));
-              });
+              if (value == shapeTarget && value == Bentuk.imageUrl[3]) {
+                setState(() {
+                  target = value;
+                  winCondition();
+                });
+              } else {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext builderContext) {
+                      _timer = Timer(Duration(milliseconds: 500), () {
+                        Navigator.of(context).pop();
+                      });
+                      return value != shapeTarget
+                          ? wrongAnswer('Bentuk Salah')
+                          : wrongAnswer('Bentuk yang dicari salah');
+                    }).then((val) {
+                  if (_timer.isActive) {
+                    _timer.cancel();
+                  }
+                });
+              }
             },
             builder: (context, candidates, rejected) {
               return target == Bentuk.imageUrl[3] && target == shapeTarget
@@ -295,25 +324,29 @@ class _GameBentukState extends State<GameBentuk> {
         top: screenSize.height * 0.1555555555555556,
         right: screenSize.width * 0.130208,
         child: DragTarget<String>(
-            onWillAccept: (value) =>
-                value == shapeTarget && value == Bentuk.imageUrl[4]
-                    ? true
-                    : false,
+            onWillAccept: (value) => true,
             onAccept: (value) {
-              setState(() {
-                target = value;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context2) => WinCondition(
-                            replay: replay,
-                            predicate: (route) {
-                              setState(() {
-                                target = "";
-                              });
-                              return route.isFirst;
-                            })));
-              });
+              if (value == shapeTarget && value == Bentuk.imageUrl[4]) {
+                setState(() {
+                  target = value;
+                  winCondition();
+                });
+              } else {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext builderContext) {
+                      _timer = Timer(Duration(milliseconds: 500), () {
+                        Navigator.of(context).pop();
+                      });
+                      return value != shapeTarget
+                          ? wrongAnswer('Bentuk Salah')
+                          : wrongAnswer('Bentuk yang dicari salah');
+                    }).then((val) {
+                  if (_timer.isActive) {
+                    _timer.cancel();
+                  }
+                });
+              }
             },
             builder: (context, candidates, rejected) {
               return target == Bentuk.imageUrl[4] && target == shapeTarget
@@ -329,25 +362,29 @@ class _GameBentukState extends State<GameBentuk> {
         bottom: screenSize.height * 0.278,
         right: screenSize.width * 0.1237,
         child: DragTarget<String>(
-            onWillAccept: (value) =>
-                value == shapeTarget && value == Bentuk.imageUrl[2]
-                    ? true
-                    : false,
+            onWillAccept: (value) => true,
             onAccept: (value) {
-              setState(() {
-                target = value;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context2) => WinCondition(
-                            replay: replay,
-                            predicate: (route) {
-                              setState(() {
-                                target = "";
-                              });
-                              return route.isFirst;
-                            })));
-              });
+              if (value == shapeTarget && value == Bentuk.imageUrl[2]) {
+                setState(() {
+                  target = value;
+                  winCondition();
+                });
+              } else {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext builderContext) {
+                      _timer = Timer(Duration(milliseconds: 500), () {
+                        Navigator.of(context).pop();
+                      });
+                      return value != shapeTarget
+                          ? wrongAnswer('Bentuk Salah')
+                          : wrongAnswer('Bentuk yang dicari salah');
+                    }).then((val) {
+                  if (_timer.isActive) {
+                    _timer.cancel();
+                  }
+                });
+              }
             },
             builder: (context, candidates, rejected) {
               return target == Bentuk.imageUrl[2] && target == shapeTarget
